@@ -42,6 +42,8 @@
             background-color: var(--bg-white);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
         a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -97,13 +99,15 @@
 
         /* --- 3. HEADER & NAV --- */
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+            box-shadow: 0 8px 30px rgba(236, 66, 122, 0.08);
+            border-bottom: 1px solid rgba(236, 66, 122, 0.12);
         }
 
         nav {
@@ -111,6 +115,7 @@
             justify-content: space-between;
             align-items: center;
             height: 70px;
+            gap: 16px;
         }
 
         .logo {
@@ -121,7 +126,7 @@
 
         .logo span { color: var(--dark-pink); font-size: 2rem; line-height: 0; }
 
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
 
         .nav-links a {
             font-weight: 600;
@@ -146,6 +151,15 @@
 
         .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
+        .mobile-toggle:focus-visible,
+        .nav-links a:focus-visible,
+        .btn:focus-visible,
+        .social-btn:focus-visible,
+        .form-control:focus-visible {
+            outline: 3px solid rgba(236, 66, 122, 0.25);
+            outline-offset: 3px;
+        }
+
         /* --- 4. HERO SECTION --- */
         .hero {
             min-height: 100vh;
@@ -153,7 +167,7 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(circle at top right, #fff0f3 0%, #ffffff 40%);
-            padding-top: 70px;
+            padding-top: 40px;
         }
 
         .hero-content {
@@ -246,6 +260,135 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             border: 1px solid #eee;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .experience-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fff8fb 100%);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid #f4e2e9;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dark-pink), #ff9bb5);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(236, 66, 122, 0.14);
+            border-color: rgba(236, 66, 122, 0.22);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .company-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .company-logo {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            background: linear-gradient(145deg, #fff, #fff7fa);
+            border: 1px solid #f6dce5;
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 0 8px 18px rgba(236, 66, 122, 0.08);
+            flex-shrink: 0;
+        }
+
+        .company-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .company-role {
+            font-size: 1.03rem;
+            font-weight: 700;
+            color: var(--text-black);
+            margin: 0;
+        }
+
+        .company-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+            transition: var(--transition);
+        }
+
+        .company-link:hover {
+            color: var(--text-black);
+            transform: translateX(3px);
+        }
+
+        .company-link i {
+            font-size: 0.78rem;
+        }
+
+        .experience-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+            white-space: nowrap;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(236, 66, 122, 0.1);
+        }
+
+        .experience-summary {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .experience-date {
+                align-self: flex-start;
+            }
         }
 
         .timeline-item {
@@ -412,9 +555,43 @@
         /* --- 10. FOOTER --- */
         footer {
             background: white;
-            padding: 40px 0;
+            padding: 40px 0 30px;
             text-align: center;
             border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: var(--transition);
+        }
+
+        .footer-brand:hover {
+            color: var(--dark-pink);
+        }
+
+        .footer-brand img {
+            height: 22px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-brand .brand-name {
+            color: var(--text-black);
+            font-weight: 700;
         }
 
         .social-icons {
@@ -440,18 +617,101 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            .hero-content { flex-direction: column-reverse; text-align: center; }
+            .hero-content { flex-direction: column-reverse; text-align: center; gap: 30px; }
             .hero-text p { margin: 0 auto 30px; }
+            .hero-text h1 { font-size: 2.8rem; }
             .about-grid { grid-template-columns: 1fr; }
             .contact-container { flex-direction: column; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
+            .skills-wrapper { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-toggle { display: block; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .avatar-container { width: 280px; height: 280px; }
+            header { position: sticky; }
+            .hero { padding-top: 30px; min-height: auto; padding-bottom: 40px; }
+            .hero-text h1 { font-size: 2rem; margin-bottom: 10px; }
+            .hero-text h2 { font-size: 1rem; }
+            .hero-text p { font-size: 0.95rem; max-width: 100%; }
+            .avatar-container { width: 250px; height: 250px; }
+            .blob-1 { width: 120px; height: 120px; }
+            .blob-2 { width: 100px; height: 100px; }
+            .section-header h2 { font-size: 1.8rem; }
+            .section-padding { padding: 50px 0; }
+            .info-card { padding: 20px; }
+            .contact-info { padding: 30px; }
+            .contact-form { padding: 30px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 15px; }
+            .stat-box { padding: 15px; }
+            .stat-number { font-size: 2rem; }
+            .timeline-item { padding-left: 20px; }
+            .tech-stack { gap: 5px; }
+            .tech-pill { font-size: 0.7rem; padding: 3px 8px; }
+            .btn { padding: 10px 25px; font-size: 0.9rem; }
+            .social-icons { justify-content: center !important; }
+            .btn-outline { margin-left: 0; margin-top: 10px; }
+            .nav-links {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                padding: 14px 20px 18px;
+                border-bottom: 1px solid rgba(236, 66, 122, 0.12);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+                width: 100%;
+                gap: 14px;
+                flex-direction: column;
+                align-items: flex-start;
+                z-index: 999;
+            }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; width: 100%; padding: 8px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 15px; }
+            .logo { font-size: 1.2rem; }
+            .logo span { font-size: 1.5rem; }
+            .hero-text h1 { font-size: 1.6rem; }
+            .hero-text p { font-size: 0.9rem; margin-bottom: 20px; }
+            .avatar-container { width: 200px; height: 200px; }
+            .blob-1 { width: 100px; height: 100px; }
+            .blob-2 { width: 80px; height: 80px; }
+            .section-header h2 { font-size: 1.4rem; margin-bottom: 8px; }
+            .section-padding { padding: 40px 0; }
+            .info-card { padding: 15px; border-radius: 15px; }
+            .info-card h3 { font-size: 1rem; }
+            .about-grid { gap: 20px; }
+            .contact-container { border-radius: 15px; }
+            .contact-info { padding: 20px; }
+            .contact-form { padding: 20px; }
+            .form-group label { font-size: 0.85rem; }
+            .form-control { padding: 12px; font-size: 0.9rem; }
+            .btn { padding: 10px 20px; width: 100%; font-size: 0.85rem; }
+            .btn-outline { margin-left: 0; margin-top: 10px; }
+            .skill-box { padding: 15px; margin-bottom: 10px; }
+            .project-card { border-radius: 12px; }
+            .card-body { padding: 20px; }
+            .card-body h4 { font-size: 1rem; }
+            .timeline-date { font-size: 0.75rem; }
+            .social-btn { width: 40px; height: 40px; font-size: 0.9rem; }
+            footer { padding: 25px 0; font-size: 0.9rem; }
+            .hero-content { gap: 24px; }
+            .avatar-container { border-width: 6px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
@@ -481,7 +741,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <p class="text-pink" style="font-weight: 700; letter-spacing: 1px;">Hello There!</p>
-                    <h1>I'm Pink Pipra</h1>
+                    <h1>I'm Sanzida Rahman Papri</h1>
                     <h2>I am <span id="typing" class="text-pink"></span></h2>
                     <p>Merging the physical world of Electronics Engineering with the infinite possibilities of Artificial Intelligence. I build smart systems that solve real-world problems with minimalist logic and maximum efficiency.</p>
                     <a href="#projects" class="btn">View My Work</a>
@@ -599,7 +859,14 @@
                 <div class="info-card">
                     <h3 style="margin-bottom: 20px;">VP of Engineering</h3>
                     <span class="timeline-date">Dec 2024 - Present</span>
-                    <p style="font-size: 0.9rem; color: #666;">FarmFilo Technologies</p>
+                    <p style="font-size: 0.95rem; color: #444; margin-bottom: 8px;">
+                        <strong>FarmFilo</strong> 
+                    </p>
+                    <p style="font-size: 0.95rem; color: #444; margin-bottom: 10px; text-align: left; display: flex; align-items: center; justify-content: flex-start; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://farmfilo.com" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; font-size: 0.9rem; font-weight: 800; color: var(--dark-pink); text-decoration: underline; text-decoration-color: rgba(236, 66, 122, 0.3); text-underline-offset: 3px; white-space: nowrap;">farmfilo.com <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+                    <span style="font-weight: 800; color: var(--dark-pink);">&</span>
+                    <a href="https://farmfilo.tech" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; font-size: 0.9rem; font-weight: 800; color: var(--dark-pink); text-decoration: underline; text-decoration-color: rgba(236, 66, 122, 0.3); text-underline-offset: 3px; white-space: nowrap;">farmfilo.tech <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+                    </p>
                     <p style="font-size: 0.85rem; margin-top: 5px;">
                         As VP of Engineering & Tech, you’ll lead engineering and technical strategy to deliver scalable solutions aligned with business goals.
                     </p>
@@ -608,7 +875,13 @@
                 <div class="info-card">
                     <h3 style="margin-bottom: 20px;">Deputy General Secretary</h3>
                     <span class="timeline-date">Jan 2025 - Present</span>
-                    <p style="font-size: 0.9rem; color: #666;">STEM Wander</p>
+                    <p style="font-size: 0.95rem; color: #444; margin-bottom: 8px;">
+                        <strong>STEM Wander</strong>
+                    </p>
+                    <p style="font-size: 0.95rem; color: #444; margin-bottom: 10px;">
+                
+                        <a href="https://stemwander.com" target="_blank" rel="noopener noreferrer" style="display: inline-block; font-size: 1rem; font-weight: 800; color: var(--dark-pink); text-decoration: underline; text-decoration-color: rgba(236, 66, 122, 0.3); text-underline-offset: 3px;">stemwander.com <i class="fas fa-external-link-alt" style="font-size: 0.8rem; margin-left: 3px;"></i></a>
+                    </p>
                     <p style="font-size: 0.85rem; margin-top: 5px;">
                         Leading initiatives and partnerships to inspire STEM curiosity among school and college students through innovative programs and platforms.
                     </p>
@@ -786,11 +1059,11 @@
                     <form>
                         <div class="form-group">
                             <label style="font-weight: 600; font-size: 0.9rem;">Your Name</label>
-                            <input type="text" class="form-control" placeholder="Hasnain Shakib">
+                            <input type="text" class="form-control" placeholder="Heba Rahman">
                         </div>
                         <div class="form-group">
                             <label style="font-weight: 600; font-size: 0.9rem;">Your Email</label>
-                            <input type="email" class="form-control" placeholder="hasnain@gmail.com">
+                            <input type="email" class="form-control" placeholder="heba@yahoo.com">
                         </div>
                         <div class="form-group">
                             <label style="font-weight: 600; font-size: 0.9rem;">Message</label>
@@ -804,9 +1077,9 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer style="padding: 1rem 0;">
         <div class="container">
-            <p>&copy; 2026 Pink Pipra.</p>
+            <p style="margin:0; text-align:center; word-wrap: break-word; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem;">&copy; 2026 Sanzida Rahman Papri | Designed by:<a href="https://pinkx.studio" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center;"><img src="https://res.cloudinary.com/dr6fkyxhq/image/upload/v1783666342/PinkX_Studio_.png" alt="pinkx.studio" style="display: inline-block; height: 1.5em; width: auto;"></a></p>
         </div>
     </footer>
 
@@ -867,27 +1140,27 @@
         const toggleBtn = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
 
+        const closeMobileMenu = () => {
+            if (window.innerWidth <= 768) {
+                navLinks.style.display = 'none';
+            }
+        };
+
         toggleBtn.addEventListener('click', () => {
             if(navLinks.style.display === 'flex') {
                 navLinks.style.display = 'none';
             } else {
                 navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.width = '100%';
-                navLinks.style.padding = '20px';
-                navLinks.style.boxShadow = '0 10px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = '';
             }
         });
     </script>
 </body>
 
 </html>
-
-
-
-
-
