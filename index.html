@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanzida Rahman Papri</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dnz63zxtf/image/upload/v1785566868/papri.png">
     <!-- Fonts: Poppins for headings, Quicksand for body (Cute & Clean) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -13,12 +15,12 @@
         /* --- 1. VARIABLES & THEME --- */
         :root {
             /* Palette */
-            --primary-pink: #ec427a;       /* Soft Pink */
-            --dark-pink: #ec427a;          /* Darker Accent Pink */
+            --primary-pink: #b388ff;       /* Vibrant Lavender */
+            --dark-pink: #7c4dff;          /* Rich Accent Lavender */
             --bg-white: #ffffff;           /* Pure White */
-            --bg-light: #ffeef2;           /* Lighter pink tint for sections */
-            --text-black: #1a1a1a;         /* Soft Black */
-            --text-gray: #ec427a;          /* Darker Gray for text */
+            --bg-light: #f5efff;           /* Lighter lavender tint for sections */
+            --text-black: #2a1f3d;         /* Soft Plum Black */
+            --text-gray: #6a4fb3;          /* Warm Lavender for text */
             
             /* Design Tokens */
             --font-head: 'Poppins', sans-serif;
@@ -106,8 +108,8 @@
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
             z-index: 1000;
-            box-shadow: 0 8px 30px rgba(236, 66, 122, 0.08);
-            border-bottom: 1px solid rgba(236, 66, 122, 0.12);
+            box-shadow: 0 8px 30px rgba(124, 77, 255, 0.08);
+            border-bottom: 1px solid rgba(124, 77, 255, 0.12);
         }
 
         nav {
@@ -166,7 +168,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at top right, #fff0f3 0%, #ffffff 40%);
+            background: radial-gradient(circle at top right, #e9ddff 0%, #ffffff 42%, #f9f6ff 100%);
             padding-top: 40px;
         }
 
@@ -212,7 +214,7 @@
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Organic shape */
             overflow: hidden;
             border: 8px solid white;
-            box-shadow: 0 20px 50px rgba(255, 192, 203, 0.4);
+            box-shadow: 0 20px 50px rgba(124, 77, 255, 0.22);
             position: relative;
             z-index: 2;
         }
@@ -231,7 +233,7 @@
             opacity: 0.6;
         }
         .blob-1 { width: 200px; height: 200px; background: var(--primary-pink); top: -20px; right: 20px; animation: float 6s ease-in-out infinite; }
-        .blob-2 { width: 150px; height: 150px; background: #e0f7fa; bottom: -20px; left: 20px; animation: float 8s ease-in-out infinite reverse; }
+        .blob-2 { width: 150px; height: 150px; background: #e1d2ff; bottom: -20px; left: 20px; animation: float 8s ease-in-out infinite reverse; }
 
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -269,7 +271,7 @@
         }
 
         .experience-card {
-            background: linear-gradient(145deg, #ffffff 0%, #fff8fb 100%);
+            background: linear-gradient(145deg, #ffffff 0%, #fff1f7 100%);
             padding: 24px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
@@ -288,13 +290,13 @@
             inset: 0 auto auto 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--dark-pink), #ff9bb5);
+            background: linear-gradient(90deg, var(--dark-pink), #ff7db8);
         }
 
         .experience-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(236, 66, 122, 0.14);
-            border-color: rgba(236, 66, 122, 0.22);
+            box-shadow: 0 16px 32px rgba(124, 77, 255, 0.14);
+            border-color: rgba(124, 77, 255, 0.22);
         }
 
         .experience-header {
@@ -366,7 +368,7 @@
             white-space: nowrap;
             padding: 8px 12px;
             border-radius: 999px;
-            background: rgba(236, 66, 122, 0.1);
+            background: rgba(124, 77, 255, 0.1);
         }
 
         .experience-summary {
@@ -451,6 +453,62 @@
             gap: 30px;
         }
 
+        /* --- 7B. ART SHOWCASE --- */
+        .art-section {
+            background: linear-gradient(180deg, #fff 0%, #faf6ff 100%);
+        }
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .art-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0e8ff;
+            transition: var(--transition);
+        }
+
+        .art-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 36px rgba(124, 77, 255, 0.12);
+        }
+
+        .art-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .art-card-body {
+            padding: 22px;
+        }
+
+        .art-card-body h4 {
+            margin-bottom: 10px;
+        }
+
+        .art-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+        }
+
+        .art-description {
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.75;
+        }
+
         .project-card {
             background: white;
             border-radius: var(--radius);
@@ -507,7 +565,7 @@
 
         .stat-box {
             padding: 20px;
-            border: 2px dashed var(--primary-pink);
+            border: 2px dashed var(--dark-pink);
             border-radius: var(--radius);
         }
         .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--text-black); }
@@ -526,7 +584,7 @@
 
         .contact-info {
             flex: 1;
-            background: var(--text-black);
+            background: linear-gradient(160deg, #2a1f3d 0%, #4b3576 100%);
             color: white;
             padding: 50px;
             display: flex;
@@ -661,7 +719,7 @@
                 backdrop-filter: blur(16px) saturate(180%);
                 -webkit-backdrop-filter: blur(16px) saturate(180%);
                 padding: 14px 20px 18px;
-                border-bottom: 1px solid rgba(236, 66, 122, 0.12);
+                border-bottom: 1px solid rgba(124, 77, 255, 0.12);
                 box-shadow: 0 12px 30px rgba(0,0,0,0.08);
                 width: 100%;
                 gap: 14px;
@@ -721,12 +779,13 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">papri<span>.</span></div>
+                <div class="logo"><img src="https://res.cloudinary.com/dnz63zxtf/image/upload/v1785567857/Sanzida_Rahman_Papri.png" alt="Logo" style="height: 40px; width: auto;"></div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#art">Art</a></li>
                     <li><a href="#research">Research</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -798,7 +857,7 @@
                     </div>
 
                     <div class="timeline-item">
-                        <span class="timeline-date">2019 - 2021</span>
+                        <span class="timeline-date">2017 - 2019</span>
                         <h4>Higher Secondary Certificate</h4>
                         <p style="font-size: 0.9rem; color: #666;">Kushtia Mohila College</p>
                         <p style="font-size: 0.85rem; margin-top: 5px;">Science Group | GPA: 5.00</p>
@@ -910,14 +969,14 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4>AI-Based Plant Disease Detector</h4>
+                        <h4>Dual Mind-EnviroBot (Final Academic Project)</h4>
                         <div class="tech-stack">
-                            <span class="tech-pill">Python</span>
-                            <span class="tech-pill">CNN</span>
+                            <span class="tech-pill">IoT</span>
+                            <span class="tech-pill">Embedded Programming</span>
                             <span class="tech-pill">Raspberry Pi</span>
                         </div>
                         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
-                            Developed a portable device using Raspberry Pi and a camera module. Implemented a Convolutional Neural Network trained on 10,000 images to identify leaf diseases with 94% accuracy.
+                           Designed and developed an advanced embedded robotics system combining environmental sensing with autonomous control, utilizing microcontroller-based system design and real-time sensor feedback.
                         </p>
                         <a href="#" style="font-weight: 700; font-size: 0.9rem;">View on GitHub <i class="fas fa-arrow-right text-pink"></i></a>
                     </div>
@@ -933,15 +992,14 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h4>Smart Home Energy Optimizer</h4>
+                        <h4>IoT-Based Smart Agriculture Monitoring System</h4>
                         <div class="tech-stack">
                             <span class="tech-pill">IoT</span>
                             <span class="tech-pill">ESP32</span>
-                            <span class="tech-pill">PCB Design</span>
+                            <span class="tech-pill">Remote Monitoring</span>
                         </div>
                         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
-                            Designed a custom PCB for an IoT node that monitors electricity usage. Integrated an ML algorithm to predict peak usage times and automate appliance shutdown to save energy.
-                        </p>
+Designed and developed an IoT-based smart agriculture monitoring system using ESP32 and custom PCB design to track soil moisture and environmental parameters in real time, enabling remote monitoring and data-driven farming decisions.                        </p>
                         <a href="#" style="font-weight: 700; font-size: 0.9rem;">View Schematic <i class="fas fa-arrow-right text-pink"></i></a>
                     </div>
                 </div>
@@ -960,17 +1018,54 @@
                         <div class="tech-stack">
                             <span class="tech-pill">C++</span>
                             <span class="tech-pill">Arduino</span>
-                            <span class="tech-pill">PID Control</span>
+                            <span class="tech-pill">Autonomous Navigation</span>
                         </div>
                         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
-                            Built a 3-sensor robot using PID control logic for smooth path tracking. Optimized the code for minimal latency and high-speed turns on complex tracks.
-                        </p>
+Designed and developed an autonomous line follower robot using Arduino and PID control for accurate path tracking. Optimized embedded C++ firmware, sensor integration, and real-time motor control to achieve low-latency response, smooth navigation, and high-speed performance on complex tracks.                        </p>
                         <a href="#" style="font-weight: 700; font-size: 0.9rem;">Watch Demo <i class="fas fa-arrow-right text-pink"></i></a>
                     </div>
                 </div>
 
             </div>
         </div>
+    </section>
+
+    <!-- ART SHOWCASE -->
+    <section id="art" class="section-padding art-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Art Showcase</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="art-grid">
+                <article class="art-card">
+                    <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80" alt="Abstract color painting">
+                    <div class="art-card-body">
+                        <div class="art-meta"><i class="fas fa-palette"></i> Abstract Expression</div>
+                        <h4>Color in Motion</h4>
+                        <p class="art-description">A vibrant composition that blends layered brush strokes and soft gradients to express energy, creativity, and emotional depth.</p>
+                    </div>
+                </article>
+
+                <article class="art-card">
+                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Digital art portrait">
+                    <div class="art-card-body">
+                        <div class="art-meta"><i class="fas fa-pen-nib"></i> Digital Portrait</div>
+                        <h4>Quiet Strength</h4>
+                        <p class="art-description">This portrait highlights calm confidence through clean contrast, delicate lighting, and a minimal background that keeps the focus on expression.</p>
+                    </div>
+                </article>
+
+                <article class="art-card">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Landscape artwork">
+                    <div class="art-card-body">
+                        <div class="art-meta"><i class="fas fa-mountain-sun"></i> Nature Study</div>
+                        <h4>Golden Horizon</h4>
+                        <p class="art-description">Inspired by open skies and warm sunsets, this piece captures a peaceful landscape with a balanced sense of scale and atmosphere.</p>
+                    </div>
+                </article>
+
     </section>
 
     <!-- RESEARCH & ACHIEVEMENTS -->
@@ -984,7 +1079,7 @@
             <!-- Stats -->
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-number">10+</div>
+                    <div class="stat-number">07+</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-box">
@@ -993,7 +1088,7 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">5+</div>
-                    <div class="stat-label">Hackathons Won</div>
+                    <div class="stat-label">AI × Embedded Systems</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">4.0</div>
@@ -1006,7 +1101,7 @@
                 <div class="info-card">
                     <h4><i class="fas fa-scroll text-pink"></i> Publications</h4>
                     <ul style="margin-top: 15px; font-size: 0.95rem;">
-                        <li style="margin-bottom: 10px;">• <b>"Optimizing Neural Networks for FPGA"</b> - IEEE Conference 2023 (Under Review)</li>
+                        <li style="margin-bottom: 10px;">• <b>"Dual Mind-EnviroBot: An Intelligent Embedded Robotics System for Environmental Sensing and Autonomous Navigation"</b> (Under Review)</li>
                         <li style="margin-bottom: 10px;">• <b>"IoT Security Challenges in Smart Grids"</b> - International Journal of Electronics.</li>
                     </ul>
                 </div>
