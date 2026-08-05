@@ -601,8 +601,24 @@
         }
 
         .contact-info h3 { color: white; margin-bottom: 20px; }
-        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .contact-item i { color: var(--dark-pink); font-size: 1.2rem; }
+
+        .copy-email-btn {
+            margin-left: 0;
+            padding: 6px 12px;
+            border: 1px solid rgba(255,255,255,0.28);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .copy-email-btn:hover { background: rgba(255,255,255,0.16); }
+        .copy-email-btn.copied { background: #e8fff2; color: #18794e; border-color: #b7e8ca; }
 
         .contact-form { flex: 1.5; padding: 50px; }
 
@@ -1187,6 +1203,7 @@ Designed and developed an autonomous line follower robot using Arduino and PID c
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <span>papri@duck.com</span>
+                        <button type="button" class="copy-email-btn" id="copy-email-btn" aria-label="Copy email address">Copy</button>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
@@ -1355,6 +1372,24 @@ Designed and developed an autonomous line follower robot using Arduino and PID c
         const nameError = document.getElementById('name-error');
         const emailError = document.getElementById('email-error');
         const messageError = document.getElementById('message-error');
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const COPY_EMAIL = 'papri@duck.com';
+
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(COPY_EMAIL);
+                    copyEmailBtn.textContent = 'Copied';
+                    copyEmailBtn.classList.add('copied');
+                    setTimeout(() => {
+                        copyEmailBtn.textContent = 'Copy';
+                        copyEmailBtn.classList.remove('copied');
+                    }, 1800);
+                } catch (error) {
+                    console.error('Copy email failed:', error);
+                }
+            });
+        }
 
         const clearValidationErrors = () => {
             [nameInput, emailInput, messageInput].forEach(input => input.classList.remove('error'));
